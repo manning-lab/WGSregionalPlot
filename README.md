@@ -13,7 +13,7 @@ The minimum data required to generate a plot are per-variant GWAS summary statis
 - Position: the genomic position of each variant
 - P-value: a p-value for each variant  (or some other data to plot on the Y-axis)
 
-LD information can also be incorperated into the plot. To do so, a file with LD-values per variant needs to be input. This package is designed to be used in conjuction with and handles outputs from our [LDGds pipeline](https://github.com/AnalysisCommons/LDGds). LD data should be stored in a plain, delimited text file as either a matrix or a row vector. In conjunction with the LD data, a reference variant must be specified. See the package vignette and accompanying data for an example of input LD data.
+LD information can also be incorperated into the plot. To do so, a file with LD-values per variant needs to be input. This package is designed to be used in conjuction with and handles outputs from our [LDGds pipeline](https://github.com/AnalysisCommons/LDGds). LD data should be stored in a plain, delimited text file as either a matrix or a row vector. Either format must have variant identifiers as row and column names. In conjunction with the LD data, a reference variant must be specified. See the package vignette and accompanying data for an example of input LD data.
 
 ## Installation
 To install this package, ensure that [*devtools*](https://cran.r-project.org/web/packages/devtools/readme/README.html) is installed. Then run:

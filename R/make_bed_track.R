@@ -1,5 +1,5 @@
 #' Make a track for bed files
-#' @param bed_data List of dataframes in bed format: chr\t start\t end\t label\t color
+#' @param bed_data List of dataframes in bed format: chr start end label color
 #' @param title title for sidebar
 #' @param genome_build hg19 or hg38
 #' @param background_color List of background colors for bed plot title bars

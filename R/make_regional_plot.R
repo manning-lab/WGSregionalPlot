@@ -22,7 +22,7 @@
 #' @param gene_title Title for gene plot
 #' @param gene_background_color Gene plot title box color
 #' @param gene_frame Should a frame be placed around the Gene plot?
-#' @param bed_data List of dataframes in bed format: chr\t start\t end\t label\t color
+#' @param bed_data List of dataframes in bed format: chr start end label color
 #' @param bed_titles List of titles for bed plots
 #' @param bed_background_colors List of background colors for bed plot title bars
 #' @param bed_frame Should frames be added around each bed plot?

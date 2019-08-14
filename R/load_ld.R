@@ -1,0 +1,50 @@
+#' Load and parse an LD matrix in the format returned by LDGds workflow
+#' @param file filepath to LD data, stored as a plain, delimited text file
+#' @param ld_ref if providing a matrix of LD values rather than a single row/column, reference variant identifier that is a column name in the LD matrix. This is the LD reference that you will want to plot the values from
+#' @return \code{ld.data} 2 column dataframe that is input to the make_regional_plot function
+#' @export
+#' @importFrom data.table fread
+
+
+load_ld <- function(file, ld_ref = NULL){
+  # load the file
+  ld.data <- fread(file, data.table = F, stringsAsFactors = F)
+
+  # check the dimensions
+  ld.dim <- dim(ld.data)
+
+  # if a one row matrix
+  if (ld.dim[1] == 1){
+    # remove non-numeric values
+    ld.matrix <- as.numeric(ld.data)
+
+    # make the data frame
+    ld.df <- data.frame(
+      MarkerName = names(ld.data)[!is.na(ld.matrix)],
+      ld = ld.matrix[!is.na(ld.matrix)],
+      stringsAsFactors = F
+    )
+  } else if (ld.dim[1] != 1 & ld.dim[2] == 2){
+    # only need to fix the names
+    names(ld.df) <- c("MarkerName", "ld")
+  } else if (ld.dim[1] > 1 & ld.dim[2] > 1){
+    # fix the name
+    names(ld.data)[1] <- "MarkerName"
+
+    # make sure ld ref is in the matrix
+    if (!(ld_ref %in% names(ld.data))){
+      warning("LD reference variant not found in LD matrix, using first column.")
+      ld_ref <- names(ld.data)[2]
+    }
+
+    # take only the ld ref column
+    ld.data <- ld.data[, c("MarkerName", ld_ref)]
+  }
+
+  return(ld.data)
+}
+
+
+
+
+

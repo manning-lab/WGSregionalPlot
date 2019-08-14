@@ -9,7 +9,6 @@ License: IDK
 Encoding: UTF-8
 LazyData: true
 Imports:
-    GenomicRanges,
     Gviz,
     biomaRt,
     data.table

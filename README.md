@@ -1,6 +1,8 @@
 # WGSregionalPlot
 **Generate regional views of GWAS results from whole genome sequence data.**
+
 Maintainer: Tim Majarian
+
 Version: 0.1
 
 ## Description:

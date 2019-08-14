@@ -35,7 +35,7 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
                              background_color = "#e6550d",
                              background_frame = T,
                              point_color = "#252525",
-                             title = ""){
+                             title = " "){
 
   # log the data if we need to
   if (should_log){
@@ -78,14 +78,15 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
     colors <- c("#B8B8B8", "#357EBD", "#46B8DA", "#5CB85C", "#EEA236", "#D43F3A", "#9632B8")
 
     # get y bounds for plot
-    ylims <- c(0, max(variant_data$pvalue))
+    ylims <- c(0, max(horizontal_value, max(variant_data$pvalue)))
 
     # generate the variant track list, to combine later
     variant.tracks <- list()
-    for (val in colors){
+    for (v in 1:length(colors)){
+      val <- colors[v]
       cur_data <- variant_data[variant_data$color == val,]
       if (nrow(cur_data) == 0) next
-      variant.tracks[[length(variant.tracks) + 1]] <- DataTrack(
+      variant.tracks[[val]] <- DataTrack(
         data = cur_data[,y_column],
         start = cur_data[,pos_column],
         end = cur_data[,pos_column],
@@ -98,7 +99,7 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
         baseline = horizontal_value,
         col.baseline = horizontal_color,
         lty.baseline = horizontal_style,
-        col = cur_data$color[1],
+        col = val,
         ylim = ylims)
     }
 

@@ -1,0 +1,53 @@
+---
+title: "Making a regional plot from WGS summary statistics"
+author: "Tim Majarian"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Making a regional plot from WGS summary statistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Description
+This tutorial will go through the main function of this package, using some sample data.
+
+## Input data
+* variant_data.RData
+* variant_ld_data.RData
+* bed_data.RData
+
+### Load the input data and define parametes
+```{r data}
+library(WGSregionalPlot)
+data(variant_data)
+data(variant_ld_data)
+data(bed_data)
+
+chr <- 20
+start <- 60900000
+end <- 61100000
+variant_chr_column = "chr"
+variant_pos_column = "pos"
+variant_y_column = "pvalue"
+variant_marker_column = "MarkerName"
+variant_ld_ref = "20-61000005-A-G"
+```
+
+### Call the main plotting function
+
+```{r plot, fig.show='hold', fig.width = 8, fig.height = 6}
+make_regional_plot(chr, start, end, variant_data, variant_chr_column, variant_pos_column, variant_y_column,
+                     variant_marker_column,
+                     variant_ld_data,
+                     variant_ld_ref
+                     )
+```

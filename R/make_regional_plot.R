@@ -58,7 +58,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                      variant_background_color = "#e6550d",
                      variant_background_frame = T,
                      variant_point_color = "#252525",
-                     variant_title = "",
+                     variant_title = " ",
                      gene_highlight = NULL,
                      gene_title = NULL,
                      gene_background_color = "#31a354",

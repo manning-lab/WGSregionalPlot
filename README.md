@@ -13,6 +13,14 @@ The minimum data required to generate a plot are per-variant GWAS summary statis
 - Position: the genomic position of each variant
 - P-value: a p-value for each variant  (or some other data to plot on the Y-axis)
 
+## Installation
+To install this package, ensure that [*devtools*](https://cran.r-project.org/web/packages/devtools/readme/README.html) is installed. Then run:
+
+```R
+devtools::install_github("manning-lab/WGSregionalPlot")
+library(WGSregionalPlot)
+```
+
 ## Main Functions
 **Note:** See further documentation for advanced options.
 

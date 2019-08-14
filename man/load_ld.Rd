@@ -4,15 +4,17 @@
 \alias{load_ld}
 \title{Load and parse an LD matrix in the format returned by LDGds workflow}
 \usage{
-load_ld(file, ld_ref = NULL)
+load_ld(file = NULL, df = NULL, ld_ref = NULL)
 }
 \arguments{
 \item{file}{filepath to LD data, stored as a plain, delimited text file}
 
+\item{df}{dataframe of preloaded ld data}
+
 \item{ld_ref}{if providing a matrix of LD values rather than a single row/column, reference variant identifier that is a column name in the LD matrix. This is the LD reference that you will want to plot the values from}
 }
 \value{
-\code{ld.data} 2 column dataframe that is input to the make_regional_plot function
+\code{ld.df} 2 column dataframe that is input to the make_regional_plot function
 }
 \description{
 Load and parse an LD matrix in the format returned by LDGds workflow

@@ -1,14 +1,19 @@
 #' Load and parse an LD matrix in the format returned by LDGds workflow
 #' @param file filepath to LD data, stored as a plain, delimited text file
+#' @param df dataframe of preloaded ld data
 #' @param ld_ref if providing a matrix of LD values rather than a single row/column, reference variant identifier that is a column name in the LD matrix. This is the LD reference that you will want to plot the values from
-#' @return \code{ld.data} 2 column dataframe that is input to the make_regional_plot function
+#' @return \code{ld.df} 2 column dataframe that is input to the make_regional_plot function
 #' @export
 #' @importFrom data.table fread
 
 
-load_ld <- function(file, ld_ref = NULL){
+load_ld <- function(file = NULL, df = NULL, ld_ref = NULL){
   # load the file
-  ld.data <- fread(file, data.table = F, stringsAsFactors = F)
+  if (!is.null(file)){
+    ld.data <- fread(file, data.table = F, stringsAsFactors = F)
+  } else if (!is.null(df)){
+    ld.data <- df
+  }
 
   # check the dimensions
   ld.dim <- dim(ld.data)

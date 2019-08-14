@@ -37,4 +37,4 @@ Inputs:
 - variant_y_column: [string] column name within *variant_data* of p-values values for each variant
 
 ## Tutorial
-See vignettes/regional_plot_vignette.html
+See [vignettes/regional_plot_vignette.html](https://github.com/manning-lab/WGSregionalPlot/blob/master/vignettes/regional_plot_vingette.html)

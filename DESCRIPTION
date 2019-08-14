@@ -1,0 +1,16 @@
+Package: WGSregionalPlot
+Type: Package
+Title: Generate Regional Views of Whole Genome Sequence Summary Statistics
+Version: 0.1.0
+Author: Tim Majarian
+Maintainer: Tim Majarian <tmajaria@broadinstitute.org>
+Description: This package contains code for generating visualizations of whole genome sequence summary statistics with a focus on functional annotation. This package was, in part, inspired by the awesome work done for Locus Zoom.
+License: IDK
+Encoding: UTF-8
+LazyData: true
+Imports:
+    GenomicRanges,
+    Gviz,
+    biomaRt,
+    data.table
+RoxygenNote: 6.1.1

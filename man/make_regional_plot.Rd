@@ -11,7 +11,7 @@ make_regional_plot(chr, start, end, variant_data, variant_chr_column,
   variant_horizontal_value = 5e-08, variant_horizontal_color = "red",
   variant_horizontal_style = "dashed",
   variant_background_color = "#e6550d", variant_background_frame = T,
-  variant_point_color = "#252525", variant_title = "",
+  variant_point_color = "#252525", variant_title = " ",
   gene_highlight = NULL, gene_title = NULL,
   gene_background_color = "#31a354", gene_frame = T, bed_data = NULL,
   bed_titles = NULL, bed_background_colors = NULL, bed_frame = T)
@@ -63,7 +63,7 @@ make_regional_plot(chr, start, end, variant_data, variant_chr_column,
 
 \item{gene_frame}{Should a frame be placed around the Gene plot?}
 
-\item{bed_data}{List of dataframes in bed format: chr\t start\t end\t label\t color}
+\item{bed_data}{List of dataframes in bed format: chr start end label color}
 
 \item{bed_titles}{List of titles for bed plots}
 

@@ -8,7 +8,7 @@ make_bed_track(bed_data, title = "", genome_build = "hg19",
   background_color = "#485467", background_frame = T)
 }
 \arguments{
-\item{bed_data}{List of dataframes in bed format: chr\t start\t end\t label\t color}
+\item{bed_data}{List of dataframes in bed format: chr start end label color}
 
 \item{title}{title for sidebar}
 

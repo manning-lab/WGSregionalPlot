@@ -38,10 +38,10 @@ load_ld <- function(file, ld_ref = NULL){
     }
 
     # take only the ld ref column
-    ld.data <- ld.data[, c("MarkerName", ld_ref)]
+    ld.df <- ld.data[, c("MarkerName", ld_ref)]
   }
 
-  return(ld.data)
+  return(ld.df)
 }
 
 

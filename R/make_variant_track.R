@@ -45,13 +45,6 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
 
   # merge with LD information if we need to
   if (!is.null(marker_column) & !is.null(ld_data) & !is.null(ld_ref)){
-    # get to right format
-    ld_data <- t(ld_data[,2:ncol(ld_data)])
-    ld_data <- data.frame(
-      marker = row.names(ld_data),
-      r = ld_data[,1],
-      stringsAsFactors = F)
-
     # first make sure the markername column is correct in the ld data file
     names(ld_data)[1] <- marker_column
 

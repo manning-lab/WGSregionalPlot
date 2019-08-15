@@ -22,7 +22,6 @@
 
 #' @importFrom Gviz DataTrack OverlayTrack
 
-
 make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
                              marker_column = NULL,
                              ld_data = NULL,
@@ -52,6 +51,11 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
     ld_data[,marker_column] <- gsub("[[:punct:]]", "_", ld_data[,marker_column])
     ld_ref <- gsub("[[:punct:]]", "_", ld_ref)
     variant_data[,marker_column] <- gsub("[[:punct:]]", "_", variant_data[,marker_column])
+
+    # fix chr encoding
+    ld_ref <- fixChr(variant_data[,chr_column], ld_ref)
+    ld_data[,marker_column] <- fixChr(variant_data[,chr_column], ld_data[,marker_column])
+
 
     # then merge
     variant_data <- merge(variant_data,

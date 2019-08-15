@@ -53,8 +53,8 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
     variant_data[,marker_column] <- gsub("[[:punct:]]", "_", variant_data[,marker_column])
 
     # fix chr encoding
-    ld_ref <- fix_chr(variant_data[,chr_column], ld_ref)
-    ld_data[,marker_column] <- fix_chr(variant_data[,chr_column], ld_data[,marker_column])
+    ld_ref <- fix_chr(variant_data[,marker_column], ld_ref)
+    ld_data[,marker_column] <- fix_chr(variant_data[,marker_column], ld_data[,marker_column])
 
 
     # then merge

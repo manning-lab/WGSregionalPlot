@@ -21,7 +21,7 @@ load_ld <- function(file = NULL, df = NULL, ld_ref = NULL){
   # if a one row matrix
   if (ld.dim[1] == 1){
     # remove non-numeric values
-    ld.matrix <- as.numeric(ld.data)
+    ld.matrix <- suppressWarnings(as.numeric(ld.data))
 
     # make the data frame
     ld.df <- data.frame(

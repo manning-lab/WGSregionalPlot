@@ -78,7 +78,7 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
     colors <- c("#B8B8B8", "#357EBD", "#46B8DA", "#5CB85C", "#EEA236", "#D43F3A", "#9632B8")
 
     # get y bounds for plot
-    ylims <- c(0, max(horizontal_value, max(variant_data$pvalue)))
+    ylims <- c(0, max(horizontal_value, max(variant_data[,y_column])))
 
     # generate the variant track list, to combine later
     variant.tracks <- list()

@@ -10,7 +10,7 @@
 #' @param background_frame whether to add frame
 #' @return \code{gene.track} gviz track
 
-#' @importFrom Gviz AnnotationTrack GeneRegionTrack
+#' @importFrom Gviz AnnotationTrack BiomartGeneRegionTrack
 #' @importFrom biomaRt getBM
 
 make_gene_track <- function(chr, start, end, mart,

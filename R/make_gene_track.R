@@ -61,14 +61,15 @@ make_gene_track <- function(chr, start, end, mart,
       name = title,
       start = start,
       end = end,
-      chromosome = gene.data$chromosome_name[1],
+      chromosome = chr,
       genome = genome_build,
       background.title = background_color,
       col.frame = background_color,
       frame = background_frame,
       collapseTranscripts="meta",
       transcriptAnnotation="symbol",
-      biomart = mart
+      biomart = mart,
+      cex = 1.2
       # shape="arrow",
     )
   }

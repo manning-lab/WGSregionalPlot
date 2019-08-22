@@ -36,6 +36,16 @@ load_ld <- function(file = NULL, df = NULL, ld_ref = NULL){
     # fix the name
     names(ld.data)[1] <- "MarkerName"
 
+    # make sure that marker names are in the right format
+    ld.data[,"MarkerName"] <- gsub("[[:punct:]]", "_", ld.data[,"MarkerName"])
+    names(ld.data)[2:ncol(ld.data)] <- gsub("[[:punct:]]", "_", names(ld.data)[2:ncol(ld.data)])
+    ld_ref <- gsub("[[:punct:]]", "_", ld_ref)
+
+    # fix chr encoding
+    if (startsWith(ld_ref, "chr") | startsWith(ld.data[1,"MarkerName"], "chr")){
+      ld_ref <- fix_chr(ld.data[1,"MarkerName"], ld_ref)
+    }
+
     # make sure ld ref is in the matrix
     if (!(ld_ref %in% names(ld.data))){
       warning("LD reference variant not found in LD matrix, using first column.")

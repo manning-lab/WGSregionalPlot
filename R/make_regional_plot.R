@@ -145,7 +145,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
     plotTracks(
       c(list(idiogram.track, scale.track, variant.track, gene.track), bed.tracks),
       showTitle = TRUE,
-      sizes=c(1, 2, 5, 4, rep(2, length(bed.tracks))),
+      sizes=c(1, 2, 8, 8, rep(2, length(bed.tracks))),
       from = start,
       to = end
     )
@@ -153,7 +153,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
     plotTracks(
       list(idiogram.track, scale.track, variant.track, gene.track),
       showTitle = TRUE,
-      sizes=c(1, 2, 5, 4),
+      sizes=c(1, 2, 8, 8),
       from = start,
       to = end
     )

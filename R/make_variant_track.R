@@ -105,7 +105,9 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
         col.baseline = horizontal_color,
         lty.baseline = horizontal_style,
         col = val,
-        ylim = ylims)
+        ylim = ylims,
+        cex = 1.2
+        )
     }
 
     variant.track <- OverlayTrack(variant.tracks,

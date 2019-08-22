@@ -69,7 +69,7 @@ make_gene_track <- function(chr, start, end, mart,
       collapseTranscripts="meta",
       transcriptAnnotation="symbol",
       biomart = mart,
-      cex = 1.2
+      cex = 1.5
       # shape="arrow",
     )
   }

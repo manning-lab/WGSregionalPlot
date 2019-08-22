@@ -27,7 +27,7 @@ This tutorial will go through the main function of this package, using some samp
 
 ### Load the input data and define parametes
 ```{r data}
-library(WGSregionalPlot)
+# library(WGSregionalPlot)
 data(variant_data)
 data(variant_ld_data)
 data(bed_data)

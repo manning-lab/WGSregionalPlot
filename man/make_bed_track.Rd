@@ -4,8 +4,8 @@
 \alias{make_bed_track}
 \title{Make a track for bed files}
 \usage{
-make_bed_track(bed_data, title = "", genome_build = "hg19",
-  background_color = "#485467", background_frame = T)
+make_bed_track(bed_data, title = " ", genome_build = "hg19",
+  background_color = "#56B4E9", background_frame = T)
 }
 \arguments{
 \item{bed_data}{List of dataframes in bed format: chr start end label color}

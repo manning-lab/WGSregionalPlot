@@ -9,12 +9,12 @@ make_regional_plot(chr, start, end, variant_data, variant_chr_column,
   variant_ld_data = NULL, variant_ld_ref = NULL,
   genome_build = "hg19", variant_should_log = T,
   variant_horizontal_value = 5e-08, variant_horizontal_color = "red",
-  variant_horizontal_style = "dashed",
-  variant_background_color = "#e6550d", variant_background_frame = T,
-  variant_point_color = "#252525", variant_title = " ",
-  gene_highlight = NULL, gene_title = NULL,
-  gene_background_color = "#31a354", gene_frame = T, bed_data = NULL,
-  bed_titles = NULL, bed_background_colors = NULL, bed_frame = T)
+  variant_horizontal_style = "dashed", variant_background_color = NULL,
+  variant_background_frame = T, variant_point_color = "#000000",
+  variant_title = "P-value", gene_highlight = NULL,
+  gene_title = "Ensembl", gene_background_color = NULL,
+  gene_frame = T, bed_data = NULL, bed_titles = NULL,
+  bed_background_colors = NULL, bed_frame = T)
 }
 \arguments{
 \item{chr}{interval chromosome}

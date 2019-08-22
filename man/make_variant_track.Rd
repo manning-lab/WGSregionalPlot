@@ -8,8 +8,8 @@ make_variant_track(variant_data, chr_column, pos_column, y_column,
   marker_column = NULL, ld_data = NULL, ld_ref = NULL,
   genome_build = "hg19", should_log = T, horizontal_value = 5e-08,
   horizontal_color = "red", horizontal_style = "dashed",
-  background_color = "#e6550d", background_frame = T,
-  point_color = "#252525", title = " ")
+  background_color = "#0072B2", background_frame = T,
+  point_color = "#000000", title = "P-value")
 }
 \arguments{
 \item{variant_data}{variant-level summary statistics}

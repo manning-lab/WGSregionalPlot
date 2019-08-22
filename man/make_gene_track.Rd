@@ -5,8 +5,8 @@
 \title{Make a mart object for plotting}
 \usage{
 make_gene_track(chr, start, end, mart, genome_build = "hg19",
-  highlight = NULL, title = "Genomic Context",
-  background_color = "#31a354", background_frame = T)
+  highlight = NULL, title = "Ensembl", background_color = "#E69F00",
+  background_frame = T)
 }
 \arguments{
 \item{chr}{interval chromosome}

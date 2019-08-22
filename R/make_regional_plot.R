@@ -28,6 +28,7 @@
 #' @param bed_frame Should frames be added around each bed plot?
 
 #' @importFrom Gviz GenomeAxisTrack IdeogramTrack plotTracks
+#' @importFrom viridis viridis_pal
 #' @export
 
 # Make a regional plot
@@ -55,18 +56,39 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                      variant_horizontal_value = 5e-8,
                      variant_horizontal_color = "red",
                      variant_horizontal_style = "dashed",
-                     variant_background_color = "#e6550d",
+                     variant_background_color = NULL,
                      variant_background_frame = T,
-                     variant_point_color = "#252525",
-                     variant_title = " ",
+                     variant_point_color = "#000000",
+                     variant_title = "P-value",
                      gene_highlight = NULL,
-                     gene_title = NULL,
-                     gene_background_color = "#31a354",
+                     gene_title = "Ensembl",
+                     gene_background_color = NULL,
                      gene_frame = T,
                      bed_data = NULL,
                      bed_titles = NULL,
                      bed_background_colors = NULL,
                      bed_frame = T){
+
+  # first define color palette, hopefully safe to use with colorblindness
+  cbp <- c("#0072B2", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#D55E00", "#CC79A7")
+
+  # assign default colors
+  if (is.null(variant_background_color)) variant_background_color <- cbp[1]; cbp <- cbp[-1]
+  if (is.null(gene_background_color)) gene_background_color <- cbp[1]; cbp <- cbp[-1]
+  if (length(bed_data) > 0){
+    if (is.null(bed_background_colors)){
+      if (length(cbp) >= length(bed_data)){
+        bed_background_colors <- cbp[1:length(bed_data)]
+      } else {
+        bed_background_colors <- viridis_pal()(length(bed_data))
+      }
+    }
+    if (is.null(bed_titles)){
+      bed_titles <- rep(" ", length(bed_data))
+    }
+  }
+
+
 
   # make the data track for variant statistics
   variant.track <- make_variant_track(variant_data,

@@ -10,9 +10,9 @@
 
 
 make_bed_track <- function(bed_data,
-                         title = "",
+                         title = " ",
                          genome_build = "hg19",
-                         background_color = "#485467",
+                         background_color = "#56B4E9",
                          background_frame = T){
   # Assume that colors are stored in column 5
   # Need to make a better way of adding color to these annotation tracks

@@ -31,10 +31,10 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
                              horizontal_value = 5e-8,
                              horizontal_color = "red",
                              horizontal_style = "dashed",
-                             background_color = "#e6550d",
+                             background_color = "#0072B2",
                              background_frame = T,
-                             point_color = "#252525",
-                             title = " "){
+                             point_color = "#000000",
+                             title = "P-value"){
 
   # log the data if we need to
   if (should_log){

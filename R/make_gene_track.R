@@ -16,8 +16,8 @@
 make_gene_track <- function(chr, start, end, mart,
                           genome_build = "hg19",
                           highlight = NULL,
-                          title = "Genomic Context",
-                          background_color = "#31a354",
+                          title = "Ensembl",
+                          background_color = "#E69F00",
                           background_frame = T){
 
   depricated <- T
@@ -69,7 +69,8 @@ make_gene_track <- function(chr, start, end, mart,
       collapseTranscripts="meta",
       transcriptAnnotation="symbol",
       biomart = mart,
-      cex = 1.5
+      #cex = 1.5 ,
+      cex.group = 1.5
       # shape="arrow",
     )
   }

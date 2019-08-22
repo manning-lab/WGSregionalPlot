@@ -147,7 +147,8 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
       showTitle = TRUE,
       sizes=c(1, 2, 8, 8, rep(2, length(bed.tracks))),
       from = start,
-      to = end
+      to = end,
+      cex.title = 1.3
     )
   } else {
     plotTracks(
@@ -155,7 +156,8 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
       showTitle = TRUE,
       sizes=c(1, 2, 8, 8),
       from = start,
-      to = end
+      to = end,
+      cex.title = 1.3
     )
   }
 }

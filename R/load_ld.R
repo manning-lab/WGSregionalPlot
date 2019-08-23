@@ -31,6 +31,7 @@ load_ld <- function(file = NULL, df = NULL, ld_ref = NULL){
     )
   } else if (ld.dim[1] != 1 & ld.dim[2] == 2){
     # only need to fix the names
+    ld.df <- ld.data
     names(ld.df) <- c("MarkerName", "ld")
   } else if (ld.dim[1] > 1 & ld.dim[2] > 1){
     # fix the name
@@ -54,6 +55,8 @@ load_ld <- function(file = NULL, df = NULL, ld_ref = NULL){
 
     # take only the ld ref column
     ld.df <- ld.data[, c("MarkerName", ld_ref)]
+  } else {
+    ld.df <- ld.data
   }
 
   return(ld.df)

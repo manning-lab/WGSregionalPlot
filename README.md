@@ -32,6 +32,8 @@ LD information can also be incorperated into the plot. To do so, a file with LD-
 | | rs12345 | rs54321 | rs98765 |
 ---|-------|----------|-------------
 | rs12345 |	1	| 0.0001 |	0.1001 |
+| rs54321 | 0.0001 | 1 | 0.82 |
+| rs98765 | 0.1001 | 0.82 | 1 |
 
 ## Installation
 ------------------------------------------

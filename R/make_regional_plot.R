@@ -134,30 +134,34 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
 
   # make scale track
   scale.track <- GenomeAxisTrack(genome = genome_build,
-                                 chromosome = chr)
+                                 chromosome = chr,
+                                 scale = round((end - start)/10, -2),
+                                 labelPos="below",
+                                 cex = 2)
 
   # make idiogram track
   idiogram.track <- IdeogramTrack(genome = genome_build,
-                                  chromosome = chr)
+                                  chromosome = chr,
+                                  cex = 2)
 
   # generate the plot
   if (!is.null(bed_data)){
     plotTracks(
       c(list(idiogram.track, scale.track, variant.track, gene.track), bed.tracks),
       showTitle = TRUE,
-      sizes=c(1, 2, 8, 8, rep(2, length(bed.tracks))),
+      sizes=c(1, 2, 8, 4, rep(2, length(bed.tracks))),
       from = start,
       to = end,
-      cex.title = 1.3
+      cex.title = 2
     )
   } else {
     plotTracks(
-      list(idiogram.track, scale.track, variant.track, gene.track),
+      list(idiogram.track, variant.track, gene.track, scale.track),
       showTitle = TRUE,
-      sizes=c(1, 2, 8, 8),
+      sizes=c(1, 8, 4, 1),
       from = start,
       to = end,
-      cex.title = 1.3
+      cex.title = 2
     )
   }
 }

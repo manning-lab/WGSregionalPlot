@@ -57,6 +57,7 @@ make_gene_track <- function(chr, start, end, mart,
       "#de2d26" = "#de2d26"
     )
   } else {
+    # collapseTrack
     gene.track <- BiomartGeneRegionTrack(
       name = title,
       start = start,
@@ -70,7 +71,13 @@ make_gene_track <- function(chr, start, end, mart,
       transcriptAnnotation="symbol",
       biomart = mart,
       #cex = 1.5 ,
-      cex.group = 1.5
+      cex.group = 1.5,
+      # lineheight=2,
+      stacking = "squish",
+      just.group = "above",
+      stackHeight=0.4,
+      cex.title = 1.5
+      # lex=5
       # shape="arrow",
     )
   }

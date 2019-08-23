@@ -27,7 +27,7 @@ This tutorial will go through the main function of this package, using some samp
 
 ### Load the input data and define parametes
 ```{r data}
-# library(WGSregionalPlot)
+library(WGSregionalPlot)
 data(variant_data)
 data(variant_ld_data)
 data(bed_data)
@@ -43,6 +43,17 @@ variant_ld_ref = "20-61000005-A-G"
 ```
 
 ### Call the main plotting function
+
+```{r plot, fig.show='hold', fig.width = 8, fig.height = 6}
+make_regional_plot(chr, start, end, 
+                     variant_data,
+                     variant_chr_column,
+                     variant_pos_column,
+                     variant_y_column,
+                     variant_marker_column,
+                     variant_ld_data,
+                     variant_ld_ref)
+```
 
 ```{r plot, fig.show='hold', fig.width = 8, fig.height = 6}
 make_regional_plot(chr, start, end, 

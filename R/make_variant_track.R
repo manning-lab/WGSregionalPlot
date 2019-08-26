@@ -106,7 +106,7 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
         lty.baseline = horizontal_style,
         col = val,
         ylim = ylims,
-        cex = 3,
+        cex = 2,
         cex.title = 1.5,
         cex.axis = 1.5
         )
@@ -135,7 +135,7 @@ make_variant_track <- function(variant_data, chr_column, pos_column, y_column,
       col.baseline = horizontal_color,
       lty.baseline = horizontal_style,
       col = point_color,
-      cex = 3,
+      cex = 2,
       cex.title = 1.5,
       cex.axis = 1.5)
   }

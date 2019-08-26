@@ -155,7 +155,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
       from = start,
       to = end,
       cex.title = 1.7,
-      title.width = 1.3
+      title.width = 1.2
     )
   } else {
     plotTracks(
@@ -165,7 +165,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
       from = start,
       to = end,
       cex.title = 1.7,
-      title.width = 1.3
+      title.width = 1.2
     )
   }
 }

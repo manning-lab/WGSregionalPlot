@@ -137,7 +137,8 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                                  chromosome = chr,
                                  scale = round((end - start)/10, -2),
                                  labelPos="below",
-                                 cex = 2)
+                                 cex = 2,
+                                 main = " ")
 
   # make idiogram track
   idiogram.track <- IdeogramTrack(genome = genome_build,

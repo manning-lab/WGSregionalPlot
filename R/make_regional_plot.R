@@ -135,8 +135,8 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
   # make scale track
   scale.track <- GenomeAxisTrack(genome = genome_build,
                                  chromosome = chr,
-                                 scale = round((end - start)/10, -2),
-                                 labelPos="below",
+                                 #scale = round((end - start)/10, -2),
+                                 #labelPos="below",
                                  cex = 2,
                                  name = " ")
 
@@ -159,9 +159,9 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
     )
   } else {
     plotTracks(
-      list(idiogram.track, variant.track, gene.track, scale.track),
+      list(idiogram.track, scale.track, variant.track, gene.track),
       showTitle = TRUE,
-      sizes=c(1, 8, 4, 1),
+      sizes=c(1, 1, 8, 4),
       from = start,
       to = end,
       cex.title = 1.7,

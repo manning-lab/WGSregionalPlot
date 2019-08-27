@@ -168,4 +168,8 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
       title.width = 1.2
     )
   }
+  plot.size <- dev.size("in")
+  make_ld_legend(box.x = plot.size[1] * 0.94,
+                 box.ymin = plot.size[2] * 0.65,
+                 box.ymax = plot.size[2] * 0.8)
 }

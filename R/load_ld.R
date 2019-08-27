@@ -29,10 +29,14 @@ load_ld <- function(file = NULL, df = NULL, ld_ref = NULL){
       ld = ld.matrix[!is.na(ld.matrix)],
       stringsAsFactors = F
     )
+    ld.df[,"MarkerName"] <- gsub("[[:punct:]]", "_", ld.df[,"MarkerName"])
+
   } else if (ld.dim[1] != 1 & ld.dim[2] == 2){
     # only need to fix the names
     ld.df <- ld.data
     names(ld.df) <- c("MarkerName", "ld")
+    ld.df[,"MarkerName"] <- gsub("[[:punct:]]", "_", ld.df[,"MarkerName"])
+
   } else if (ld.dim[1] > 1 & ld.dim[2] > 1){
     # fix the name
     names(ld.data)[1] <- "MarkerName"

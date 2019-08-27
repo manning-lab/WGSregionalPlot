@@ -11,5 +11,7 @@ LazyData: true
 Imports:
     Gviz,
     biomaRt,
-    data.table
+    data.table,
+    draw,
+    viridis
 RoxygenNote: 6.1.1

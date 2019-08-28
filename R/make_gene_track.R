@@ -10,9 +10,10 @@
 #' @param background_frame whether to add frame
 #' @return \code{gene.track} gviz track
 
-#' @importFrom Gviz BiomartGeneRegionTrack GeneRegionTrack
-#' @importFrom biomaRt getBM
-#' @importFrom AnnotationDbi loadDb
+#' @importFrom Gviz GeneRegionTrack
+#' @importFrom TxDb.Hsapiens.UCSC.hg19.knownGene TxDb.Hsapiens.UCSC.hg19.knownGene
+#' @importFrom TxDb.Hsapiens.UCSC.hg38.knownGene TxDb.Hsapiens.UCSC.hg38.knownGene
+
 
 make_gene_track <- function(chr, start, end, mart,
                           genome_build = "hg19",
@@ -22,15 +23,14 @@ make_gene_track <- function(chr, start, end, mart,
                           background_frame = T){
 
   # query to get gene coordinates
-  if (genome_build %in% c("hg19", "grch37")){
-    sql.file <- paste0(system.file('sql', package='WGSregionalPlot'), "/ensembl_grch37.sqlite")
+  if (genome_build %in% c("hg38", "grch38")){
+    gene.db <- TxDb.Hsapiens.UCSC.hg38.knownGene
   } else {
-    sql.file <- paste0(system.file('sql', package='WGSregionalPlot'), "/ensembl_grch38.sqlite")
+    gene.db <- TxDb.Hsapiens.UCSC.hg19.knownGene
   }
 
-  gene.db  <- loadDb(sql.file)
-
   gene.track <- GeneRegionTrack(
+    gene.db,
     name = title,
     start = start,
     end = end,

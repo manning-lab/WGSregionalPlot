@@ -14,5 +14,7 @@ Imports:
     data.table,
     draw,
     viridis,
-    AnnotationDbi
+    AnnotationDbi,
+    TxDb.Hsapiens.UCSC.hg19.knownGene,
+    TxDb.Hsapiens.UCSC.hg38.knownGene
 RoxygenNote: 6.1.1

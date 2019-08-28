@@ -109,7 +109,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                                     variant_title)
 
   # make a mart object for gene coordinates
-  mart <- make_mart(genome_build)
+  # mart <- make_mart(genome_build)
 
   # make gene track
   gene.track <- make_gene_track(chr,

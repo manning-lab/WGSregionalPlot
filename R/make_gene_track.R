@@ -11,8 +11,9 @@
 #' @return \code{gene.track} gviz track
 
 #' @importFrom Gviz GeneRegionTrack
-#' @importFrom TxDb.Hsapiens.UCSC.hg19.knownGene TxDb.Hsapiens.UCSC.hg19.knownGene
-#' @importFrom TxDb.Hsapiens.UCSC.hg38.knownGene TxDb.Hsapiens.UCSC.hg38.knownGene
+#' @importFrom EnsDb.Hsapiens.v75 EnsDb.Hsapiens.v75
+#' @importFrom EnsDb.Hsapiens.v86 EnsDb.Hsapiens.v86
+#' @importFrom ensembldb getGeneRegionTrackForGviz
 
 
 make_gene_track <- function(chr, start, end, mart,
@@ -24,25 +25,30 @@ make_gene_track <- function(chr, start, end, mart,
 
   # query to get gene coordinates
   if (genome_build %in% c("hg38", "grch38")){
-    gene.db <- TxDb.Hsapiens.UCSC.hg38.knownGene
+    gene.db <- EnsDb.Hsapiens.v86
   } else {
-    gene.db <- TxDb.Hsapiens.UCSC.hg19.knownGene
+    gene.db <- EnsDb.Hsapiens.v75
   }
 
-  gene.track <- GeneRegionTrack(
+  grt <- getGeneRegionTrackForGviz(
     gene.db,
-    name = title,
     start = start,
     end = end,
-    chromosome = chr,
+    chromosome = chr
+  )
+
+  gene.track <- GeneRegionTrack(
+    grt,
+    name = title,
     genome = genome_build,
     stacking = "squish",
-    collapseTranscripts="meta",
-    transcriptAnnotation="symbol",
+    collapseTranscripts = "meta",
+    transcriptAnnotation = "symbol",
     just.group = "above",
     background.title = background_color,
+    frame = background_frame,
     col.frame = background_color,
-    stackHeight=0.4,
+    stackHeight = 0.4,
     cex.title = 1.5
   )
 

@@ -13,5 +13,6 @@ Imports:
     biomaRt,
     data.table,
     draw,
-    viridis
+    viridis,
+    AnnotationDbi
 RoxygenNote: 6.1.1

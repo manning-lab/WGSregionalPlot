@@ -55,7 +55,7 @@ make_regional_plot(chr, start, end, variant_data, variant_chr_column,
 
 \item{variant_title}{Manhattan plot title}
 
-\item{gene_highlight}{Should a gene be highlighted? hgnc symbol}
+\item{gene_highlight}{Should a gene be highlighted? hgnc symbol (DEPRICATED)}
 
 \item{gene_title}{Title for gene plot}
 

@@ -18,7 +18,7 @@
 #' @param variant_background_frame Should a frame be placed around the Manhattan plot?
 #' @param variant_point_color Color of points if no LD information is provided
 #' @param variant_title Manhattan plot title
-#' @param gene_highlight Should a gene be highlighted? hgnc symbol
+#' @param gene_highlight Should a gene be highlighted? hgnc symbol (DEPRICATED)
 #' @param gene_title Title for gene plot
 #' @param gene_background_color Gene plot title box color
 #' @param gene_frame Should a frame be placed around the Gene plot?
@@ -70,7 +70,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                      bed_frame = T){
 
   # first define color palette, hopefully safe to use with colorblindness
-  cbp <- c("#0072B2", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#D55E00", "#CC79A7")
+  cbp <- c("#0072B2", "#E69F00", "#009E73", "#56B4E9", "#009E73", "#F0E442", "#D55E00", "#CC79A7")
 
   # assign default colors
   if (is.null(variant_background_color)) variant_background_color <- cbp[1]; cbp <- cbp[-1]
@@ -109,7 +109,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                                     variant_title)
 
   # make a mart object for gene coordinates
-  mart <- make_mart(genome_build)
+  # mart <- make_mart(genome_build)
 
   # make gene track
   gene.track <- make_gene_track(chr,
@@ -125,6 +125,9 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
     bed.tracks <- list()
     for (bed_index in 1:length(bed_data)){
       bed.tracks[[bed_index]] <- make_bed_track(bed_data[[bed_index]],
+                                              chr,
+                                              start,
+                                              end,
                                               bed_titles[bed_index],
                                               genome_build,
                                               bed_background_colors[bed_index],
@@ -151,7 +154,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
     plotTracks(
       c(list(idiogram.track, scale.track, variant.track, gene.track), bed.tracks),
       showTitle = TRUE,
-      sizes=c(1, 2, 8, 4, rep(2, length(bed.tracks))),
+      sizes=c(1, 1, 8, 4, rep(2, length(bed.tracks))),
       from = start,
       to = end,
       cex.title = 1.7,
@@ -168,8 +171,12 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
       title.width = 1.2
     )
   }
-  plot.size <- dev.size("in")
-  make_ld_legend(box.x = plot.size[1] * 0.94,
-                 box.ymin = plot.size[2] * 0.65,
-                 box.ymax = plot.size[2] * 0.8)
+
+  # make LD key if needed
+  if (!is.null(variant_marker_column)){
+    plot.size <- dev.size("in")
+    make_ld_legend(box.x = plot.size[1] * 0.94,
+                   box.ymin = plot.size[2] * 0.65,
+                   box.ymax = plot.size[2] * 0.8)
+  }
 }

@@ -10,76 +10,48 @@
 #' @param background_frame whether to add frame
 #' @return \code{gene.track} gviz track
 
-#' @importFrom Gviz BiomartGeneRegionTrack
-#' @importFrom biomaRt getBM
+#' @importFrom Gviz GeneRegionTrack
+#' @importFrom EnsDb.Hsapiens.v75 EnsDb.Hsapiens.v75
+#' @importFrom EnsDb.Hsapiens.v86 EnsDb.Hsapiens.v86
+#' @importFrom ensembldb getGeneRegionTrackForGviz
+
 
 make_gene_track <- function(chr, start, end, mart,
                           genome_build = "hg19",
-                          highlight = NULL,
+                          highlight = NULL, # DEPRICATED
                           title = "Ensembl",
                           background_color = "#E69F00",
                           background_frame = T){
 
-  depricated <- T
-  if (!depricated){
-    # query biomart for the gene positions and symbols
-    gene.data <- getBM(attributes=c("ensembl_gene_id", "hgnc_symbol", "chromosome_name", "start_position", "end_position"),filters = c("chromosome_name"), values=list(chr), mart=mart)
-
-    # subset to genes in the region
-    gene.data <- gene.data[(gene.data$end_position >= start) & (gene.data$start_position <= end),]
-    # gene.data[gene.data$hgnc_symbol == "", "hgnc_symbol"] <- gene.data[gene.data$hgnc_symbol == "", "ensembl_gene_id"]
-    gene.data <- gene.data[gene.data$hgnc_symbol != "",]
-
-    # define a color for non highlighted genes (tan)
-    gene.data$color <- "#ffd470"
-
-    # change the color of highlighted genes
-    if (!is.null(highlight)){
-      highlight <- c(highlight)
-      gene.data[gene.data$hgnc_symbol %in% highlight, "color"] <- "#de2d26"
-    }
-
-    gene.track <- AnnotationTrack(
-      name = title,
-      start = gene.data$start_position,
-      end = gene.data$end_position,
-      id = gene.data$hgnc_symbol,
-      feature = gene.data$color,
-      chromosome = gene.data$chromosome_name[1],
-      genome = genome_build,
-      col="transparent",
-      background.title = background_color,
-      col.frame = background_color,
-      frame = background_frame,
-      groupAnnotation="id",
-      "#ffd470" = "#ffd470",
-      "#0fa3ff" = "#0fa3ff",
-      "#de2d26" = "#de2d26"
-    )
+  # query to get gene coordinates
+  if (genome_build %in% c("hg38", "grch38")){
+    gene.db <- EnsDb.Hsapiens.v86
   } else {
-    # collapseTrack
-    gene.track <- BiomartGeneRegionTrack(
-      name = title,
-      start = start,
-      end = end,
-      chromosome = chr,
-      genome = genome_build,
-      background.title = background_color,
-      col.frame = background_color,
-      frame = background_frame,
-      collapseTranscripts="meta",
-      transcriptAnnotation="symbol",
-      biomart = mart,
-      #cex = 1.5 ,
-      cex.group = 1.5,
-      # lineheight=2,
-      stacking = "squish",
-      just.group = "above",
-      stackHeight=0.4,
-      cex.title = 1.5
-      # lex=5
-      # shape="arrow",
-    )
+    gene.db <- EnsDb.Hsapiens.v75
   }
+
+  grt <- getGeneRegionTrackForGviz(
+    gene.db,
+    start = start,
+    end = end,
+    chromosome = chr
+  )
+
+  gene.track <- GeneRegionTrack(
+    grt,
+    name = title,
+    genome = genome_build,
+    stacking = "squish",
+    collapseTranscripts = "meta",
+    transcriptAnnotation = "symbol",
+    just.group = "above",
+    background.title = background_color,
+    frame = background_frame,
+    col.frame = background_color,
+    stackHeight = 0.5,
+    cex.title = 1.5,
+    cex.group = 1.5
+  )
+
   return(gene.track)
 }

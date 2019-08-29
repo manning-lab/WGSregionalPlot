@@ -9,7 +9,7 @@
 #' @importFrom Gviz AnnotationTrack
 
 
-make_bed_track <- function(bed_data,
+make_bed_track <- function(bed_data, chr, start, end,
                          title = " ",
                          genome_build = "hg19",
                          background_color = "#56B4E9",
@@ -22,19 +22,26 @@ make_bed_track <- function(bed_data,
     bed_data[,5] <- "#878787"
   }
 
+  # fix chromosome encoding
+  bed_data[,1] <- fix_chr(chr, bed_data[,1])
+
+  # subset to only the range that we want
+  bed_data <- bed_data[(bed_data[,1] == chr) & (bed_data[,2] <= end) & (bed_data[,3] >= start), ]
+
   bed.track <- AnnotationTrack(
     name = title,
     start = bed_data[,2],
     end = bed_data[,3],
     id = bed_data[,4],
     feature = bed_data[,5],
-    chromosome = bed_data[1,1],
+    chromosome = chr,
     genome = genome_build,
     stacking = "dense",
     col = "transparent",
     background.title = background_color,
     col.frame = background_color,
     frame = background_frame,
+    stackHeight = 1,
     groupAnnotation = "feature",
     "255,255,255" = "#ffffff",
     "255,195,77" = "#ffc34d",

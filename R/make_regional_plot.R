@@ -125,6 +125,9 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
     bed.tracks <- list()
     for (bed_index in 1:length(bed_data)){
       bed.tracks[[bed_index]] <- make_bed_track(bed_data[[bed_index]],
+                                              chr,
+                                              start,
+                                              end,
                                               bed_titles[bed_index],
                                               genome_build,
                                               bed_background_colors[bed_index],

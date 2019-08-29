@@ -43,7 +43,7 @@ variant_ld_ref = "20-61000005-A-G"
 ```
 
 ### Call the main plotting function
-```{r plot, fig.show='hold', fig.width = 10, fig.height = 7}
+```{r plot, fig.show='hold', fig.width = 10, fig.height = 6}
 make_regional_plot(chr, start, end, 
                      variant_data,
                      variant_chr_column,

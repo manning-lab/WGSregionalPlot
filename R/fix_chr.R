@@ -3,6 +3,8 @@
 #' @param chr2 chromosome encodings to change
 
 fix_chr <- function(chr1, chr2){
+  chr1 <- as.character(chr1)
+  chr2 <- as.character(chr2)
   if (startsWith(chr1[1], "chr") & !startsWith(chr2[1], "chr")){
     chr2 <- paste0("chr", chr2)
   } else if (!startsWith(chr1[1], "chr") & startsWith(chr2[1], "chr")){

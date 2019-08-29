@@ -70,7 +70,7 @@ make_regional_plot <- function(chr, start, end, variant_data, variant_chr_column
                      bed_frame = T){
 
   # first define color palette, hopefully safe to use with colorblindness
-  cbp <- c("#0072B2", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#D55E00", "#CC79A7")
+  cbp <- c("#0072B2", "#E69F00", "#009E73", "#56B4E9", "#009E73", "#F0E442", "#D55E00", "#CC79A7")
 
   # assign default colors
   if (is.null(variant_background_color)) variant_background_color <- cbp[1]; cbp <- cbp[-1]

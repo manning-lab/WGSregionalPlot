@@ -48,7 +48,7 @@ make_gene_track <- function(chr, start, end, mart,
     background.title = background_color,
     frame = background_frame,
     col.frame = background_color,
-    stackHeight = 0.4,
+    stackHeight = 0.5,
     cex.title = 1.5,
     cex.group = 1.5
   )

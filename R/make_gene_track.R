@@ -18,7 +18,7 @@
 
 make_gene_track <- function(chr, start, end, mart,
                           genome_build = "hg19",
-                          highlight = NULL,
+                          highlight = NULL, # DEPRICATED
                           title = "Ensembl",
                           background_color = "#E69F00",
                           background_frame = T){

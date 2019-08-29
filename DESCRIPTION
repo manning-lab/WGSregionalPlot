@@ -10,7 +10,6 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     Gviz,
-    biomaRt,
     data.table,
     draw,
     viridis,

@@ -62,4 +62,4 @@ Inputs:
 
 ## Tutorial
 ------------------------------------------
-See [vignettes/regional_plot_vignette.html](https://github.com/manning-lab/WGSregionalPlot/blob/master/vignettes/regional_plot_vingette.html)
+See vignettes/
